@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demoApp
+  name: demo-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demoApp
+      app: demo-app
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -15,12 +15,12 @@ spec:
   template:
     metadata:
       labels:
-        app: demoApp
+        app: demo-app
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-      - name: demoApp
+      - name: demo-app
         image: 106490669391.dkr.ecr.us-east-1.amazonaws.com/rep_lab:latest
         ports:
         - containerPort: 8080
@@ -36,12 +36,12 @@ spec:
 apiVersion: v1
 kind: Service 
 metadata:
-  name: demoApp
+  name: demo-app
   labels:
-    app: demoApp
+    app: demo-app
 spec:
   selector:
-    app: demoApp
+    app: demo-app
     version: blue
   type: NodePort
   ports:
