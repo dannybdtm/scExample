@@ -31,3 +31,20 @@ spec:
           limits:
             cpu: 250m
             memory: 256Mi
+            
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: demoApp
+  labels:
+    app: demoApp
+spec:
+  selector:
+    app: demoApp
+    version: blue
+  type: NodePort
+  ports:
+  - nodePort: 31113
+    port: 8080
+    targetPort: 8080
