@@ -21,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: demo-app
-        image: 106490669391.dkr.ecr.us-east-1.amazonaws.com/rep_lab:latest
+        image: 043424211101.dkr.ecr.us-east-2.amazonaws.com/rep_lab:latest
         ports:
         - containerPort: 8080
         resources:
