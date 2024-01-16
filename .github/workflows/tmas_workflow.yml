@@ -27,4 +27,4 @@ jobs:
         with:
           context: image/
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/texlive:latest
+          tags: ghcr.io/user/texlive:latest
