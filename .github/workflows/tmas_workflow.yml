@@ -49,8 +49,8 @@ jobs:
           with:
             context: .
             push: true
-            tags: ${{ steps.meta.outputs.tags }}
-            labels: ${{ steps.meta.outputs.labels }}
+            tags: ghcr.io/${{ github.repository_owner }}
+            #labels: ${{ steps.meta.outputs.labels }}
     TrendMicroArtifactScan:
       runs-on: ubuntu-latest
       environment: DockerRegistry
