@@ -39,12 +39,13 @@ jobs:
         uses: trendmicro/tmas-scan-action@1.0.10
         with:
             # Mandatory
-            CLOUD_ONE_API_KEY: ${{ secrets.API_KEY }}
+            TMAS_API_KEY: ${{ secrets.API_KEY }}
             REGION: us-1
             # Optional
             SBOM: true # Saves SBOM to SBOM.json so you can export it as an artifact later.
             IMAGE: ${{ steps.meta.outputs.tags }} # The image need to be public or the pipeline need to have access to the private image of choice.
             # For each threshold below, select the maximum number of vulnerabilities that are acceptable.
+            MALWARE_SCAN: true
             MAX_TOTAL: 1000
             MAX_CRITICAL: 500
             MAX_HIGH: 500
