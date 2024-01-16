@@ -36,7 +36,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       - name: Trend Cloud One Container Security Scan Action
-        uses: trendmicro/cloudone-container-security-github-action@1.0.8
+        uses: trendmicro/tmas-scan-action@1.0.10
         with:
             # Mandatory
             CLOUD_ONE_API_KEY: ${{ secrets.API_KEY }}
