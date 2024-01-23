@@ -52,12 +52,12 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            docker save $(imageName):$(tag) -o $(Pipeline.Workspace)/image.tar
+            docker save $(imageName):$(tag) -o image.tar
       - task: Bash@3
         displayName: "Scan from Registry to Json"
         inputs:
           targetType: 'inline'
-          script: ./tmas-cli/tmas scan docker-archive:$(Pipeline.Workspace)/image.tar --malwareScan --saveSBOM > result.json
+          script: ./tmas-cli/tmas scan docker-archive:image.tar --malwareScan --saveSBOM > result.json
         env:
           TMAS_API_KEY: $(apikey)
       
