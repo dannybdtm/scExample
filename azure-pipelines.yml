@@ -48,10 +48,16 @@ stages:
           cleanDestinationFolder: true
           overwriteExistingFiles: true
       - task: Bash@3
+        displayName: Save Docker Image
+        inputs:
+          targetType: 'inline'
+          script: |
+            docker save $(imageName):$(tag) -o $(Pipeline.Workspace)/image.tar
+      - task: Bash@3
         displayName: "Scan from Registry to Json"
         inputs:
           targetType: 'inline'
-          script: ./tmas-cli/tmas scan registry:$(imageName):$(tag) --malwareScan --saveSBOM --platform linux/amd64 > result.json
+          script: ./tmas-cli/tmas scan docker-archive:$(Pipeline.Workspace)/image.tar --malwareScan --saveSBOM > result.json
         env:
           TMAS_API_KEY: $(apikey)
       
