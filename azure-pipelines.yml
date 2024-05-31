@@ -50,7 +50,7 @@ stages:
       displayName: "Scan from Registry to Json"
       inputs:
         targetType: 'inline'
-        script: ./tmas-cli/tmas scan docker-archive:image.tar --malwareScan --saveSBOM > result.json
+        script: ./tmas-cli/tmas scan secrets docker-archive:image.tar --malwareScan --saveSBOM > result.json
       env:
         TMAS_API_KEY: $(apikey)
     
