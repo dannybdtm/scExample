@@ -61,9 +61,6 @@ stages:
       env:
         TMAS_API_KEY: $(apikey)
 
-    - publish: 'result.json'
-      displayName: 'Publish json'
-      artifact: drop
     - publish: 'resultSecrets.json'
       displayName: 'Publish json'
       artifact: drop
