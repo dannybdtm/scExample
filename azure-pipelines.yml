@@ -45,22 +45,14 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          docker save $(imageName):$(tag) -o image.tar
+          docker save $(imageName):$(tag) -o $(imageName).tar
     - task: Bash@3
       displayName: "Scan from Registry to Json"
       inputs:
         targetType: 'inline'
-        script: ./tmas-cli/tmas scan docker-archive:image.tar -VMS --saveSBOM > result.json
+        script: ./tmas-cli/tmas scan docker-archive:$(imageName).tar -VMS --saveSBOM > result.json
       env:
         TMAS_API_KEY: $(apikey)
-    - task: Bash@3
-      displayName: "Scan from Registry to Json"
-      inputs:
-        targetType: 'inline'
-        script: ./tmas-cli/tmas scan secrets docker-archive:image.tar > resultSecrets.json
-      env:
-        TMAS_API_KEY: $(apikey)
-
-    - publish: 'resultSecrets.json'
+    - publish: 'result.json'
       displayName: 'Publish json'
       artifact: drop
